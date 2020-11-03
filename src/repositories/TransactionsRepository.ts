@@ -12,7 +12,7 @@ interface Balance {
   total: number;
 }
 
-interface TransWithBalance {
+interface TransactionsWithBalance {
   transactions: Transaction[];
   balance: Balance;
 }
@@ -50,16 +50,16 @@ class TransactionsRepository {
     return balance;
   }
 
-  public transWithBalance(): TransWithBalance {
+  public allWithBalance(): TransactionsWithBalance {
     const { transactions } = this;
     const balance = this.getBalance();
 
-    const transactionsPlusBalance = {
+    const transactionsWithBalance = {
       transactions,
       balance,
     };
 
-    return transactionsPlusBalance;
+    return transactionsWithBalance;
   }
 
   public create({ title, value, type }: CreateTransactionDTO): Transaction {
